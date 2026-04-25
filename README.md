@@ -1,4 +1,2 @@
-# farhan_hibatullah-1801624179-drp
-Nama:farhanhibatullah
-
+Nama:Farhan Hibatullah
 NIM:1801624179
