@@ -1,4 +1,9 @@
 # Farhan_Hibatullah-1801624179-drp
 
-Nama:Farhan Hibatullah
+Nama Ketua:Farhan Hibatullah
+
 NIM:1801624179
+
+Nama Anggota 1: Nur Muzakiyah
+
+NIM:1801624264
