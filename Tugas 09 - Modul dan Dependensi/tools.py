@@ -38,7 +38,7 @@ def select_menu (menu):
         stress_reminder()
 
     elif menu == "6":
-        print ("\nExiting Program... Goodbye! 👋")
+        print ("\nExiting Program... ")
         return True
     
     else:
