@@ -18,5 +18,5 @@ while True:
     is_done = select_menu(menu=menu)
 
     if is_done:
-        print(f"\nGood bye, {user}! Don't forget to complete your task! Have a great day🤩")
+        print(f"\nGood bye👋, {user}! Don't forget to complete your task! Have a great day🤩")
         break 
