@@ -36,7 +36,8 @@ def create_database():
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS progress(
         id_progress INTEGER PRIMARY KEY AUTOINCREMENT,
-        presentase INTEGER
+        persentase INTEGER,
+        id_task INTEGER
     )
     """)
 
