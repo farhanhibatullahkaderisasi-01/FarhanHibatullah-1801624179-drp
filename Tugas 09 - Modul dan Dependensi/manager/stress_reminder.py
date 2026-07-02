@@ -1,4 +1,5 @@
 import sqlite3 
+import json
 
 def create_reminder():
     
@@ -75,3 +76,63 @@ def delete_reminder():
    conn.close()
 
    print("🗑️ Reminder berhasil dihapus!")
+
+def export_json():
+
+   conn = sqlite3.connect("taskmate.db")
+   cursor = conn.cursor()
+
+   cursor.execute("SELECT * FROM reminder")
+   reminder = cursor.fetchall()
+
+   with open("reminder_backup.json", "w") as file:
+      json.dump(reminder, file, indent=4)
+
+   conn.close()
+
+   print("Export reminder berhasil!")
+
+def import_json():
+
+   with open("reminder_backup.json", "r") as file:
+      reminder = json.load(file)
+
+   conn = sqlite3.connect("taskmate.db")
+   cursor = conn.cursor()
+
+   cursor.execute("DELETE FROM reminder")
+
+   for item in reminder:
+      cursor.execute("""
+      INSERT INTO reminder (id_reminder, pesan, id_task)
+      VALUES (?, ?, ?)
+      """, item)
+
+   conn.commit()
+   conn.close()
+
+   print("Import reminder berhasil!")
+
+if __name__ == "__main__":
+   pilihan = input(
+      "1. Tambah Reminder\n"
+      "2. Lihat Reminder\n"
+      "3. Update Reminder\n"
+      "4. Hapus Reminder\n"
+      "5. Export Reminder\n"
+      "6. Import Reminder\n"
+      "Pilih:"
+   )
+
+   if pilihan == "1":
+      create_reminder()
+   elif pilihan == "2":
+      read_reminder()
+   elif pilihan == "3":
+      update_reminder()
+   elif pilihan == "4":
+      delete_reminder()
+   elif pilihan == "5":
+      export_json()
+   elif pilihan == "6":
+      import_json()
