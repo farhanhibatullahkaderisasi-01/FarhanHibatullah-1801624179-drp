@@ -62,4 +62,26 @@ def delete_priority ():
 
     print("🗑️Kategori prioritas berhasil dihapus!")
 
+def priority_task():
+    while True:
+        print("\n== PRIORITY TASK ===")
+        print("1. Create Priority")
+        print("2. Read Priority")
+        print("3. Update Priority")
+        print("4. Delete Priority")
+        print("5. Kembali")
    
+        pilihan = input("pilih: ")
+
+        if pilihan == "1":
+            create_priority()
+        elif pilihan == "2":
+            read_priority()
+        elif pilihan == "3":
+            update_priority()
+        elif pilihan == "4":
+            delete_priority()
+        elif pilihan == "5":
+            break
+        else: 
+            print("Pilihan tidak valid")

@@ -14,10 +14,20 @@ def export_json():
     cursor.execute("SELECT * FROM priority")
     priority = cursor.fetchall()
 
+    #Export Progress
+    cursor.execute("SELECT * FROM progress")
+    progress = cursor.fetchall()
+
+    #Export Reminder
+    cursor.execute("SELECT * FROM reminder")
+    reminder = cursor.fetchall()
+
     data = {}
 
     data ["task"] = tasks
     data ["priority"] = priority
+    data ["progress"] = progress
+    data ["reminder"] = reminder
 
     with open ("backup.json", "w") as file:
         json.dump(data, file, indent=4)

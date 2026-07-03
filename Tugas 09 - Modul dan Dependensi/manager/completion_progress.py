@@ -8,7 +8,7 @@ def create_progress():
     conn = sqlite3.connect("taskmate.db")
     cursor = conn.cursor()
 
-    cursor.excute("""
+    cursor.execute("""
     INSERT INTO progress (persentase, id_task)
     VALUES (?, ?)
     """, (persentase, id_task))
@@ -22,9 +22,9 @@ def create_progress():
 def read_progress():
     
     conn = sqlite3.connect("taskmate.db")
-    cursor = con.cursor()
+    cursor = conn.cursor()
 
-    cursor.excute("SELECT * FROM progress")
+    cursor.execute("SELECT * FROM progress")
     progress = cursor.fetchall()
 
     print("\n📊 Daftar Progress:")
@@ -41,9 +41,9 @@ def read_progress():
 def update_progress():
 
     id_progress = input("Masukkan ID progress yang ingin diupdate: ")
-    persentase_baru = imput("Masukkan persentase baru: ")
+    persentase_baru = input("Masukkan persentase baru: ")
 
-    conn = sqlite3.connet("taskmate.db")
+    conn = sqlite3.connect("taskmate.db")
     cursor = conn.cursor()
 
     cursor.excute("""
@@ -61,10 +61,10 @@ def delete_progress():
 
     id_progress = input("Masukkan ID progress yang ingin dihapus: ")
 
-    conn = sqlite3.connet("taskmate.db")
+    conn = sqlite3.connect("taskmate.db")
     cursor = conn.cursor()
 
-    cursor.excute("""
+    cursor.execute("""
     DELETE FROM progress 
     WHERE id_progress = ?
     """, (id_progress,))
@@ -74,3 +74,93 @@ def delete_progress():
 
     print("🗑️ Progress berhasil dihapus!")
         
+import json
+
+def export_json():
+    conn = sqlite3.connect("taskmate.db")
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT * FROM progress")
+    progress = cursor.fetchall()
+
+    with open("progress_backup.json", "w") as file:
+        json.dump(progress, file, indent=4)
+
+    conn.close()
+    print("Export progress berhasil!")
+
+def import_json():
+    with open("progress_backup.json", "r") as file:
+        progress = json.load(file)
+
+    conn = sqlite3.connect("taskmate.db")
+    cursor = conn.cursor()
+
+    cursor.execute("DELETE FROM progress")
+
+    for item in progress:
+        cursor.execute("""
+        INSERT INTO progress (id_progress, persentase, id_task)
+        VALUES (?, ?, ?)
+        """, item)
+
+    conn.commit()
+    conn.close()
+
+    print("Import progress berhasil!")
+
+if __name__ == "__main__":
+    pilihan = input(
+        "1. Tambah Progress\n"
+        "2. Lihat Progress\n"
+        "3. Update Progress\n"
+        "4. Hapus Progress\n"
+        "5. Export Progress\n"
+        "6. Import Progress\n"
+        "Pilih: "   
+    )
+
+    if pilihan == "1":
+        create_progress()
+    elif pilihan == "2":
+        read_progress()
+    elif pilihan == "3":
+        update_progress()
+    elif pilihan == "4":
+        delete_progress()
+    elif pilihan == "5":
+        export_json()
+    elif pilihan == "6":
+        import_json()
+
+def completion_progress():
+    while True:
+        print("\n=== COMPLETION PROGRESS ===")
+        print("1. Tambah Progress")
+        print("2. Lihat Progress")
+        print("3. Update Progress")
+        print("4. Hapus Progress")
+        print("5. Export Progress")
+        print("6. Import Progress")
+        print("7. Kembali")
+
+        pilihan = input("Pilih: ")
+
+        if pilihan == "1":
+            create_progress()
+        elif pilihan == "2":
+            read_progress()
+        elif pilihan == "3":
+            update_progress()
+        elif pilihan == "4":
+            delete_progress()
+        elif pilihan == "5":
+            export_json()
+        elif pilihan == "6":
+            import_json()
+        elif pilihan == "7":
+            break
+        else:
+            print("Pilihan tidak valid")
+
+            

@@ -64,3 +64,27 @@ def delete_task ():
     conn.close()
 
     print("🗑️Task berhasil dihapus!")
+
+def task_tracker():
+    while True:
+        print("\n=== TASK TRACKER ===")
+        print("1. Create Task")
+        print("2. Read Task")
+        print("3. Update Task")
+        print("4. Delete Task")
+        print("5. Kembali")
+
+        pilihan = input("Pilih: ")
+
+        if pilihan == "1":
+            create_task()
+        elif pilihan == "2":
+            read_task()
+        elif pilihan == "3":
+            update_task()
+        elif pilihan == "4":
+            delete_task()
+        elif pilihan == "5":
+            break
+        else:
+            print("Pilihan tidak valid.")
