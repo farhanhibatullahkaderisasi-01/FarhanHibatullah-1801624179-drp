@@ -6,6 +6,8 @@ from manager.stress_reminder import stress_reminder
 from export_import import export_json, import_json
 from manager.task_statistics import task_statistics
 
+from mapreduce_analysis import mapreduce_analysis
+
 def display_menu(user):
 
     print ()
@@ -21,11 +23,12 @@ def display_menu(user):
     print ("6. Task Statistics📋")
     print ("7. Export Data 📤")
     print ("8. Import Data 📥")
-    print ("9. Exit 🚪")
+    print ("9. MapReduce Analysis")
+    print ("10. Exit 🚪")
 
     print ("🟤🟤🟤🟤🟤🟤🟤🟤🟤🟤🟤🟤🟤🟤🟤")
 
-def select_menu (menu):
+def select_menu(menu):
     
     if menu == "1":
         task_tracker()
@@ -52,10 +55,13 @@ def select_menu (menu):
         import_json()
 
     elif menu == "9":
+        mapreduce_analysis()
+
+    elif menu == "10":
         print ("\nExiting Program... ")
         return True
-    
+
     else:
-        print ("\n⚠️ Invalid Menu!")
+        print ("\n⚠️ Invalid Menu! Please choose 1-10")
 
     return False

@@ -8,16 +8,14 @@ if __name__ == '__main__':
     
     user = input ("Please, Enter Your Name Here!")
 
-    print ()
+    exit_program = False
 
-    while True: 
+    while not exit_program:
 
         display_menu(user)
 
-        menu = input("Enter the Feature Number You Want To Use (1-8): ")
+        menu = input("Enter the Feature Number (1-10): ").strip()
+        
+        exit_program = select_menu(menu)
 
-        is_done = select_menu(menu=menu)
-
-        if is_done:
-            print(f"\nGood bye👋, {user}! Don't forget to complete your task! Have a great day🤩")
-            break 
+    print(f"\nGood bye👋, {user}! Don't forget to complete your task! Have a great day🤩")
