@@ -4,6 +4,7 @@ from manager.workload_monitor import workload_monitor
 from manager.completion_progress import completion_progress
 from manager.stress_reminder import stress_reminder
 from export_import import export_json, import_json
+from manager.task_statistics import task_statistics
 
 def display_menu(user):
 
@@ -17,9 +18,10 @@ def display_menu(user):
     print ("3. Workload Monitor📊")
     print ("4. Completion Progress 📈")
     print ("5. Stress Reminder 🧠")
-    print ("6. Export Data 📤")
-    print ("7. Import Data 📥")
-    print ("8. Exit 🚪")
+    print ("6. Task Statistics📋")
+    print ("7. Export Data 📤")
+    print ("8. Import Data 📥")
+    print ("9. Exit 🚪")
 
     print ("🟤🟤🟤🟤🟤🟤🟤🟤🟤🟤🟤🟤🟤🟤🟤")
 
@@ -41,12 +43,15 @@ def select_menu (menu):
         stress_reminder()
 
     elif menu == "6":
-        export_json()
+        task_statistics()
 
     elif menu == "7":
-        import_json()
+        export_json()
 
     elif menu == "8":
+        import_json()
+
+    elif menu == "9":
         print ("\nExiting Program... ")
         return True
     
