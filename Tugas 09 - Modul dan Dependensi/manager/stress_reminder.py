@@ -25,7 +25,7 @@ def read_reminder():
    conn = sqlite3.connect("taskmate.db")
    cursor = conn.cursor()
 
-   cursor.excute("SELECT * FROM reminder")
+   cursor.execute("SELECT * FROM reminder")
    reminders = cursor.fetchall()
 
    print("\n🔔 Daftar Reminder")
@@ -136,3 +136,34 @@ if __name__ == "__main__":
       export_json()
    elif pilihan == "6":
       import_json()
+
+def stress_reminder():
+   while True:
+      print("\n=== STRESS REMINDER ===")
+      print("1. Tambah Reminder")
+      print("2. Lihat Reminder")
+      print("3. Update Reminder")
+      print("4. Hapus Reminder")
+      print("5. Export Reminder")
+      print("6. Import Reminder")
+      print("7. Kembali")
+
+      pilihan = input("Pilih: ")
+
+      if pilihan == "1":
+         create_reminder()
+      elif pilihan == "2":
+         read_reminder()
+      elif pilihan == "3":
+         update_reminder()
+      elif pilihan == "4":
+         delete_reminder()
+      elif pilihan == "5":
+         export_json()
+      elif pilihan == "6":
+         import_json()
+      elif pilihan == "7":
+         break
+      else:
+         print("Pilihan tidak valid")
+         
