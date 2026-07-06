@@ -11,14 +11,14 @@ def workload_monitor():
     cursor.execute("""
         SELECT COUNT(*)
         FROM task
-        WHERE status = 'Selesai'
+        WHERE status = 'selesai'
     """)
     selesai = cursor.fetchone()[0]
 
     cursor.execute("""
         SELECT COUNT(*)
         FROM task
-        WHERE status = 'Belum Selesai'
+        WHERE status = 'Belum selesai'
     """)
     belum = cursor.fetchone()[0]
 

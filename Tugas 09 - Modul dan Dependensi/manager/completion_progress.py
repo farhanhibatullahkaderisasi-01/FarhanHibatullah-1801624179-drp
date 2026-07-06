@@ -46,7 +46,7 @@ def update_progress():
     conn = sqlite3.connect("taskmate.db")
     cursor = conn.cursor()
 
-    cursor.excute("""
+    cursor.execute("""
     UPDATE progress
     SET persentase = ?
     WHERE id_progress = ?
