@@ -28,7 +28,8 @@ def mapreduce_analysis():
     mapped_data = list(map(ubah_prioritas, data))
 
     print("\n=== MAP ===")
-    print(mapped_data[:5])
+    for task in mapped_data[:5]:
+        print(task)
 
     # FILTER
 
@@ -37,7 +38,9 @@ def mapreduce_analysis():
     )
 
     print("\n=== FILTER ===")
-    print(filtered_data[:5])
+    for task in filtered_data[:5]:
+        print(task)
+
     print(f"Jumlah task prioritas tinggi: {len(filtered_data)}") 
 
     # SORT
@@ -48,7 +51,8 @@ def mapreduce_analysis():
     )
 
     print("\n=== SORT ===")
-    print(sorted_data[:5])
+    for task in sorted_data[:5]:
+        print(task)
 
     # REDUCE
     
@@ -58,7 +62,8 @@ def mapreduce_analysis():
     )
 
     print("\n=== REDUCE ===")
-    print(f"Total task selesai : {total_selesai}")
+    print(f"Total task selesai      : {total_selesai}")
+    print(f"Total task keseluruhan  : {len(mapped_data)}")
 
 if __name__ == "__main__":
     print("Program dimulai")
