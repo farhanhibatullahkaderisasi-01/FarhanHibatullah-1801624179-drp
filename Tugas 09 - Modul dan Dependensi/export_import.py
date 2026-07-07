@@ -34,7 +34,7 @@ def export_json():
 
     conn.close()
 
-    print("Export berhasil!")
+    print("✅ Export berhasil!")
 
 
 def import_json(): 
@@ -48,6 +48,14 @@ def import_json():
     #Hapus data lama
     cursor.execute("DELETE FROM task")
     cursor.execute("DELETE FROM priority")
+    cursor.execute("DELETE FROM progress")
+    cursor.execute("DELETE FROM reminder")
+
+    #Reset auto increment
+    cursor.execute("DELETE FROM sqlite_sequence WHERE name='task'")
+    cursor.execute("DELETE FROM sqlite_sequence WHERE name='priority'")
+    cursor.execute("DELETE FROM sqlite_sequence WHERE name='progress'")
+    cursor.execute("DELETE FROM sqlite_sequence WHERE name='reminder'")
 
     #Import Task
     for task in data["task"]:
@@ -61,10 +69,22 @@ def import_json():
         INSERT INTO priority (id_priority, kategori) VALUES (?, ?)
         """, priority)
 
+    #Import Progress
+    for progress in data["progress"]:
+        cursor.execute ("""
+        INSERT INTO progress (id_progress, persentase, id_task) VALUES (?, ?, ?)
+        """, progress)
+
+    #Import Reminder
+    for reminder in data["reminder"]:
+        cursor.execute ("""
+        INSERT INTO reminder (id_reminder, pesan, id_task) VALUES (?, ?, ?)
+        """, reminder)
+
     conn.commit()
     conn.close()
 
-    print("Import berhasil!")
+    print("✅ Import berhasil!")
 
 if __name__ == "__main__":
     pilihan = input ("1. Export\n2. Import\nPilih:")

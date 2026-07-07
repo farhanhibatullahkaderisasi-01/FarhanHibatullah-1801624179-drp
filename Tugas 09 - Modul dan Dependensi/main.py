@@ -18,7 +18,7 @@ if __name__ == '__main__':
     
     if user != user_lama:
         conn = sqlite3.connect("taskmate.db")
-        cursor = conn.cursor() 
+        cursor = conn.cursor()
 
         cursor.execute("DELETE FROM task")
         cursor.execute("DELETE FROM priority")

@@ -2,8 +2,8 @@ import sqlite3
 
 def create_progress():
 
-    persentase = int(input("Masukan persentase progress: "))
-    id_task = int(input("Masukan ID task: "))
+    persentase = int(input("Masukkan persentase progress: "))
+    id_task = int(input("Masukkan ID task: "))
 
     conn = sqlite3.connect("taskmate.db")
     cursor = conn.cursor()
@@ -74,75 +74,15 @@ def delete_progress():
 
     print("🗑️ Progress berhasil dihapus!")
         
-import json
-
-def export_json():
-    conn = sqlite3.connect("taskmate.db")
-    cursor = conn.cursor()
-
-    cursor.execute("SELECT * FROM progress")
-    progress = cursor.fetchall()
-
-    with open("progress_backup.json", "w") as file:
-        json.dump(progress, file, indent=4)
-
-    conn.close()
-    print("Export progress berhasil!")
-
-def import_json():
-    with open("progress_backup.json", "r") as file:
-        progress = json.load(file)
-
-    conn = sqlite3.connect("taskmate.db")
-    cursor = conn.cursor()
-
-    cursor.execute("DELETE FROM progress")
-
-    for item in progress:
-        cursor.execute("""
-        INSERT INTO progress (id_progress, persentase, id_task)
-        VALUES (?, ?, ?)
-        """, item)
-
-    conn.commit()
-    conn.close()
-
-    print("Import progress berhasil!")
-
-if __name__ == "__main__":
-    pilihan = input(
-        "1. Tambah Progress\n"
-        "2. Lihat Progress\n"
-        "3. Update Progress\n"
-        "4. Hapus Progress\n"
-        "5. Export Progress\n"
-        "6. Import Progress\n"
-        "Pilih: "   
-    )
-
-    if pilihan == "1":
-        create_progress()
-    elif pilihan == "2":
-        read_progress()
-    elif pilihan == "3":
-        update_progress()
-    elif pilihan == "4":
-        delete_progress()
-    elif pilihan == "5":
-        export_json()
-    elif pilihan == "6":
-        import_json()
-
 def completion_progress():
+
     while True:
         print("\n=== COMPLETION PROGRESS ===")
         print("1. Tambah Progress")
         print("2. Lihat Progress")
         print("3. Update Progress")
         print("4. Hapus Progress")
-        print("5. Export Progress")
-        print("6. Import Progress")
-        print("7. Kembali")
+        print("5. Kembali")
 
         pilihan = input("Pilih: ")
 
@@ -155,10 +95,6 @@ def completion_progress():
         elif pilihan == "4":
             delete_progress()
         elif pilihan == "5":
-            export_json()
-        elif pilihan == "6":
-            import_json()
-        elif pilihan == "7":
             break
         else:
             print("Pilihan tidak valid")
