@@ -1,4 +1,6 @@
 from tools import display_menu, select_menu
+import sqlite3
+import os 
 
 if __name__ == '__main__':
 
@@ -7,6 +9,27 @@ if __name__ == '__main__':
     print("🟤🟤🟤🟤🟤🟤🟤🟤🟤🟤🟤🟤🟤🟤🟤")
     
     user = input ("Please, Enter Your Name Here!")
+
+    user_lama = ""
+
+    if os.path.exists("current_user.txt"):
+        with open ("current_user.txt", "r") as file:
+            user_lama = file.read()
+    
+    if user != user_lama:
+        conn = sqlite3.connect("taskmate.db")
+        cursor = conn.cursor() 
+
+        cursor.execute("DELETE FROM task")
+        cursor.execute("DELETE FROM priority")
+        cursor.execute("DELETE FROM progress")
+        cursor.execute("DELETE FROM reminder")
+
+        conn.commit() 
+        conn.close()
+    
+    with open ("current_user.txt", "w") as file:
+        file.write(user)
 
     exit_program = False
 
