@@ -25,6 +25,11 @@ if __name__ == '__main__':
         cursor.execute("DELETE FROM progress")
         cursor.execute("DELETE FROM reminder")
 
+        cursor.execute("DELETE FROM sqlite_sequence WHERE name='task'")
+        cursor.execute("DELETE FROM sqlite_sequence WHERE name='priority'")
+        cursor.execute("DELETE FROM sqlite_sequence WHERE name='progress'")  
+        cursor.execute("DELETE FROM sqlite_sequence WHERE name= 'reminder'")        
+
         conn.commit() 
         conn.close()
     

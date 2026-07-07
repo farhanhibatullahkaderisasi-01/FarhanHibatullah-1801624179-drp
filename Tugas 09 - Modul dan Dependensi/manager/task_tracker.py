@@ -3,7 +3,7 @@ import sqlite3
 def create_task (): 
 
     nama_task = input("Masukkan nama task: ")
-    deadline = input ("Masukkan deadline task:")
+    deadline = input ("Masukkan deadline task (YYYY-MM-DD):")
     status = input ("Masukkan status task (Belum selesai/selesai):")
 
     conn = sqlite3.connect ("taskmate.db")
@@ -32,7 +32,7 @@ def read_task ():
 
     else:
         for task in tasks:
-            print (task)
+            print (task[:4])
 
     conn.close()
 
