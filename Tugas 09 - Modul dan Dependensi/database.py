@@ -16,7 +16,8 @@ def create_database():
     cursor.execute(""" 
     CREATE TABLE IF NOT EXISTS priority(
         id_priority INTEGER PRIMARY KEY AUTOINCREMENT,
-        kategori TEXT
+        kategori TEXT,
+        id_task INTEGER
     )
     """)
 

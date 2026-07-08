@@ -2,12 +2,16 @@ import sqlite3
 
 def create_priority ():
 
-    kategori = input ("Masukkan kategori prioritas:")
+    id_task = input("Masukkan ID Task: ")
+    kategori = input ("Masukkan kategori prioritas (Tinggi/Sedang/Rendah):")
 
     conn = sqlite3.connect ("taskmate.db")
     cursor = conn.cursor()
 
-    cursor.execute("""INSERT INTO priority (kategori) VALUES (?)""", (kategori,))
+    cursor.execute("""
+    INSERT INTO priority (kategori, id_task) 
+    VALUES (?,?)
+    """, (kategori, id_task))
 
     conn.commit()
     conn.close()
@@ -19,7 +23,18 @@ def read_priority ():
     conn = sqlite3.connect ("taskmate.db")
     cursor = conn.cursor()
 
-    cursor.execute("SELECT * FROM priority")
+    cursor.execute("""
+    SELECT *
+    FROM priority
+    ORDER BY
+    CASE
+        WHEN LOWER(kategori) = 'tinggi' THEN 1
+        WHEN LOWER(kategori) = 'sedang' THEN 2
+        WHEN LOWER(kategori) = 'rendah' THEN 3
+    END,
+    id_task
+    """)
+    
     priorities = cursor.fetchall()
 
     print("\n📋 Daftar Prioritas:")
