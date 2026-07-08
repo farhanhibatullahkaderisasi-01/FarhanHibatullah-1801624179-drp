@@ -11,37 +11,18 @@ def task_statistics():
     cursor.execute("""
         SELECT COUNT(*)
         FROM task
-        WHERE status = 'Selesai'
-    """)
-    task_selesai = cursor.fetchone()[0]
-
-    cursor.execute("""
-        SELECT COUNT(*)
-        FROM task
-        WHERE status = 'Belum Selesai'
+        WHERE LOWER(status) = 'Belum Selesai'
     """)
     task_belum_selesai = cursor.fetchone()[0]
 
-    if total > 0:
-        persentase = (task_selesai / total) * 100
-    else:
-        persentase = 0
-
     print("\n===== TASK STATISTICS =====")
     print(f"Total Task          : {total}")
-    print(f"Task Selesai        : {task_selesai}")
-    print(f"Task Belum Selesai  : {task_belum_selesai}")
-    print(f"Persentase Selesai  : {persentase:.2f}%")
 
     print("\nKesimpulan:")
 
-    if persentase == 100:
-        print("Semua tugas sudah selesai.")
-    elif persentase >= 70:
-        print("Sebagian besar tugas sudah selesai.")
-    elif persentase >=40:
-        print("Progres tugas sedang berjalan.")
+    if task_belum_selesai == 0:
+        print("✅ Semua tugas sudah selesai")
     else:
-        print("Masih banyak tugas yang belum selesai.")
+        print(f"Masih ada {task_belum_selesai} tugas yang belum selesai‼️")
 
     conn.close()
