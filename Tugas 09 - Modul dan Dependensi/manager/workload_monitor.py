@@ -27,7 +27,7 @@ def workload_monitor():
     else:
         persentase = 0
 
-    print("\n🟤🟤🟤🟤🟤WORKLOAD MONITOR🟤🟤🟤🟤🟤")
+    print("\n🟤🟤🟤 WORKLOAD MONITOR 🟤🟤🟤")
     print(f"Total Task              : {total}")
     print(f"Task Selesai            : {selesai}")
     print(f"Task Belum Selesai      : {belum}")
