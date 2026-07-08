@@ -11,9 +11,11 @@ def task_statistics():
     cursor.execute("""
         SELECT COUNT(*)
         FROM task
-        WHERE LOWER(status) = 'Belum Selesai'
+        WHERE LOWER(TRIM(status)) = 'belum selesai'
     """)
     task_belum_selesai = cursor.fetchone()[0]
+
+    print(f"Task belum selesai: {task_belum_selesai}") 
 
     print("\n🟤🟤🟤 TASK STATISTICS 🟤🟤🟤")
     print(f"Total Task          : {total}")

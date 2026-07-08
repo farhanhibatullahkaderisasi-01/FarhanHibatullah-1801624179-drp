@@ -60,13 +60,13 @@ def import_json():
     #Import Task
     for task in data["task"]:
         cursor.execute ("""
-        INSERT INTO task (id, nama_task, deadline, status, id_user, id_priority) VALUES (?, ?, ?, ?, ?, ?)
+        INSERT INTO task (id_task, nama_task, deadline, status, id_user, id_priority) VALUES (?, ?, ?, ?, ?, ?)
         """, task)
 
     #Import Priority
     for priority in data["priority"]:
         cursor.execute ("""
-        INSERT INTO priority (id_priority, kategori) VALUES (?, ?)
+        INSERT INTO priority (id_priority, kategori, id_task) VALUES (?, ?, ?)
         """, priority)
 
     #Import Progress
