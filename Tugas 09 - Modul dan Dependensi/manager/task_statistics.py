@@ -15,7 +15,7 @@ def task_statistics():
     """)
     task_belum_selesai = cursor.fetchone()[0]
 
-    print("\n===== TASK STATISTICS =====")
+    print("\n🟤🟤🟤 TASK STATISTICS 🟤🟤🟤")
     print(f"Total Task          : {total}")
 
     print("\nKesimpulan:")

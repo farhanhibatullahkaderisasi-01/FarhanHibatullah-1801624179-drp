@@ -77,7 +77,7 @@ def delete_progress():
 def completion_progress():
 
     while True:
-        print("\n=== COMPLETION PROGRESS ===")
+        print("\n🟤🟤🟤 COMPLETION PROGRESS 🟤🟤🟤")
         print("1. Tambah Progress")
         print("2. Lihat Progress")
         print("3. Update Progress")

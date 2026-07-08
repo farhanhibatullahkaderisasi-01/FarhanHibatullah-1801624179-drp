@@ -79,7 +79,7 @@ def delete_priority ():
 
 def priority_task():
     while True:
-        print("\n== PRIORITY TASK ===")
+        print("\n🟤🟤🟤 PRIORITY TASK 🟤🟤🟤")
         print("1. Create Priority")
         print("2. Read Priority")
         print("3. Update Priority")

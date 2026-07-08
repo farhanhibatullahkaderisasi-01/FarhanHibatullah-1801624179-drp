@@ -67,7 +67,7 @@ def delete_task ():
 
 def task_tracker():
     while True:
-        print("\n=== TASK TRACKER ===")
+        print("\n🟤🟤🟤 TASK TRACKER 🟤🟤🟤")
         print("1. Create Task")
         print("2. Read Task")
         print("3. Update Task")

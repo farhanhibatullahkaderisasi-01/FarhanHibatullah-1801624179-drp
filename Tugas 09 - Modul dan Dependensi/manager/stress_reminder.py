@@ -79,7 +79,7 @@ def delete_reminder():
 def stress_reminder():
 
    while True:
-      print("\n=== STRESS REMINDER ===")
+      print("\n🟤🟤🟤 STRESS REMINDER 🟤🟤🟤")
       print("1. Tambah Reminder")
       print("2. Lihat Reminder")
       print("3. Update Reminder")
