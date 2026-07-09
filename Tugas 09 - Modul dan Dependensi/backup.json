@@ -2,25 +2,33 @@
     "task": [
         [
             1,
-            "Ujian ",
-            "2026-08-02",
-            "Selesai",
+            "Ujian",
+            "2026-08-01",
+            "Belum selesai",
             null,
             null
         ],
         [
             2,
             "UTS",
-            "2026-08-04",
-            "Selesai",
+            "2026-08-03",
+            "Belum selesai",
             null,
             null
         ],
         [
             3,
-            "UAS ",
-            "2026-08-07",
+            "UAS",
+            "2026-08-06",
             "Belum selesai",
+            null,
+            null
+        ],
+        [
+            4,
+            "Praktikum",
+            "2026-08-08",
+            "selesai",
             null,
             null
         ]
@@ -28,41 +36,61 @@
     "priority": [
         [
             1,
-            "Rendah",
+            "Sedang",
             1
         ],
         [
             2,
-            "Rendah",
+            "Tinggi",
             2
         ],
         [
             3,
             "Tinggi",
             3
+        ],
+        [
+            4,
+            "Rendah",
+            4
         ]
     ],
     "progress": [
         [
             1,
-            10,
-            3
-        ],
-        [
-            2,
-            100,
+            80,
             1
         ],
         [
-            3,
-            100,
+            2,
+            50,
             2
+        ],
+        [
+            3,
+            60,
+            3
+        ],
+        [
+            4,
+            100,
+            4
         ]
     ],
     "reminder": [
         [
             1,
-            "Jangan lupa untuk dikerjakan ya! Masih ada waktunya untuk pengerjaan UAS!",
+            "Jangan lupa selesaikan ujiannya ya!",
+            1
+        ],
+        [
+            2,
+            "Jangan lupa belajar buat UTS besok!",
+            2
+        ],
+        [
+            3,
+            "Semangat UAS nya!",
             3
         ]
     ]

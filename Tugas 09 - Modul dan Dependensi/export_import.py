@@ -72,7 +72,8 @@ def import_json():
     #Import Progress
     for progress in data["progress"]:
         cursor.execute ("""
-        INSERT INTO progress (id_progress, persentase, id_task) VALUES (?, ?, ?)
+        INSERT INTO progress (id_progress, persentase, id_task)
+        VALUES (?, ?, ?)
         """, progress)
 
     #Import Reminder

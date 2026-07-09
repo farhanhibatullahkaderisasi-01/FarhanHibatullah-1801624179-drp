@@ -13,6 +13,7 @@ def task_statistics():
         FROM task
         WHERE LOWER(TRIM(status)) = 'belum selesai'
     """)
+    
     task_belum_selesai = cursor.fetchone()[0]
 
     print(f"Task belum selesai: {task_belum_selesai}") 
